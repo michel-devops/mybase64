@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Check if at least one argument is provided
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <STRING> [-d]"
+    echo "  -d: Decode the Base64 string (optional)"
+    exit 1
+fi
+
+# Check if the "-d" flag is provided for decoding
+if [ "$2" == "-d" ]; then
+    # Decode the Base64 string and print the result
+    echo "$1" | base64 -d
+else
+    # Encode (encrypt) the string to Base64 and print the result
+    echo -n "$1" | base64
+fi
